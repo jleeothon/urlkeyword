@@ -30,7 +30,9 @@ Modify your ``settings.py`` to include the list of words you want to use as keyw
 
     # settings.py
 
-    URL_KEYWORDS = ('new', edit', 'delete')
+    URL_KEYWORDS = ('new', edit', 'delete', 'beautify', 'defenestrate')
+
+If keywords are not provided in settings, the default value is ``('new', edit', 'delete')``.
 
 Then add the validator to your slug field::
 
@@ -39,4 +41,5 @@ Then add the validator to your slug field::
     from urlkeyword import validate_url_keyword
 
     class Village(Model):
-        code = models.SlugField(max_length=20, validators=[validate_url_keyword])
+        name = models.CharField(max_length=100)
+        slug = models.SlugField(max_length=20, validators=[validate_url_keyword])
